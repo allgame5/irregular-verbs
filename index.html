@@ -59,7 +59,7 @@
     </tr>
   </thead>
   <tbody>
-    <!-- Hier kommen die 200 Verben rein -->
+    <!-- Dein Tabelleninhalt ist hier -->
     <tr><td>choose</td><td>chose</td><td>chosen</td><td>wählen</td></tr>
 <tr><td>come</td><td>came</td><td>come</td><td>kommen</td></tr>
 <tr><td>cost</td><td>cost</td><td>cost</td><td>kosten</td></tr>
@@ -160,12 +160,7 @@
 <tr><td>win</td><td>won</td><td>won</td><td>gewinnen</td></tr>
 <tr><td>write</td><td>wrote</td><td>written</td><td>schreiben</td></tr>
 
-    <!-- ... -->
-    <!-- Füge hier alle anderen 185 Verben ein, wie in meiner vorherigen Antwort -->
-    <!-- Für Platzgründe lasse ich sie hier aus, kann sie dir aber als Datei geben oder hier aufteilen -->
-
-    <!-- letzter Eintrag als Beispiel -->
-    <tr><td>write</td><td>wrote</td><td>written</td><td>schreiben</td></tr>
+    <!-- ... restliche Verben ... -->
   </tbody>
 </table>
 
@@ -174,18 +169,21 @@ function filterTable() {
   const input = document.getElementById("searchInput");
   const filter = input.value.toLowerCase();
   const table = document.getElementById("verbTable");
-  const trs = table.getElementsByTagName("tr");
+  const tr = table.getElementsByTagName("tr");
 
-  for (let i = 1; i < trs.length; i++) {
-    const tds = trs[i].getElementsByTagName("td");
-    let visible = false;
+  for (let i = 1; i < tr.length; i++) {
+    const tds = tr[i].getElementsByTagName("td");
+    let found = false;
+
     for (let j = 0; j < tds.length; j++) {
-      if (tds[j] && tds[j].innerText.toLowerCase().includes(filter)) {
-        visible = true;
+      const td = tds[j];
+      if (td && td.textContent.toLowerCase().includes(filter)) {
+        found = true;
         break;
       }
     }
-    trs[i].style.display = visible ? "" : "none";
+
+    tr[i].style.display = found ? "" : "none";
   }
 }
 </script>
